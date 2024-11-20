@@ -1,26 +1,30 @@
 <script lang="ts">
 import { defineComponent } from "vue";
+import Temporizador from "./Temporizador.vue";
 
 export default defineComponent({
   name: "Formulario",
+  components: { Temporizador },
   data() {
     return {
-      tempoEmSegundos: 0
-    }
+      descricao: "",
+    };
   },
   methods: {
-    iniciar() {
-      console.log('iniciando')
-    },
-    finalizar() {
-      console.log('finalizando')
+    finalizarTarefa(tempoDecorrido: number): void {
+      this.$emit("aoSalvarTarefa", {
+        duracaoEmSegundos: tempoDecorrido,
+        descricao: this.descricao,
+      });
+      this.descricao = "";
     },
   },
+  emits: ["aoSalvarTarefa"],
 });
 </script>
 
 <template>
-  <div class="box">
+  <div class="box formulario">
     <div class="columns">
       <div
         class="column is-8"
@@ -31,31 +35,19 @@ export default defineComponent({
           type="text"
           class="input"
           placeholder="Qual tarefa você deseja iniciar?"
+          v-model="descricao"
         />
       </div>
       <div class="column">
-        <div
-          class="is-flex is-align-items-center is-justify-content-space-between"
-        >
-          <section>
-            <strong> 00:00:00 </strong>
-          </section>
-          <button class="button" @click="iniciar">
-            <span class="icon">
-              <i class="fas fa-play"></i>
-            </span>
-            <span>play</span>
-          </button>
-          <button class="button" @click="finalizar">
-            <span class="icon">
-              <i class="fas fa-stop"></i>
-            </span>
-            <span>stop</span>
-          </button>
-        </div>
+        <Temporizador @ao-temporizador-finalizado="finalizarTarefa" />
       </div>
     </div>
   </div>
 </template>
 
-<style></style>
+<style>
+.formulario {
+  color: var(--texto-primario);
+  background-color: var(--bg-primario);
+}
+</style>
