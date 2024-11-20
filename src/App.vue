@@ -1,10 +1,11 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import BarraLateral from "./components/BarraLateral.vue";
+import Notificacoes from "./components/Notificacoes.vue";
 
 export default defineComponent({
   name: "App",
-  components: { BarraLateral },
+  components: { BarraLateral, Notificacoes },
   data() {
     return {
       modoEscuroAtivo: false,
@@ -28,6 +29,7 @@ export default defineComponent({
     </div>
 
     <div class="column is-one-three conteudo">
+      <Notificacoes />
       <router-view></router-view>
     </div>
   </main>
@@ -44,7 +46,7 @@ main {
 }
 
 main.modo-escuro {
-  --bg-primario: #2d2d42;
+  --bg-primario: #14141a;
   --texto-primario: #fff;
 }
 
