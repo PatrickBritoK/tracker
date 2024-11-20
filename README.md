@@ -1,5 +1,7 @@
 # tracker
 
+Projeto de aprendizado sobre VUE3 
+
 ## Project setup
 ```
 npm install
