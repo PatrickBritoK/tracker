@@ -48,7 +48,7 @@ export default defineComponent({
           v-model="descricao"
         />
       </div>
-      <div class="column is-3">
+      <div class="column is-2">
         <div class="select">
           <select v-model="idProjeto">
             <option value="">Selecione o projeto</option>

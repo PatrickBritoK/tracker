@@ -3,6 +3,39 @@
     {
       "id": 1,
       "nome": "Tracker 3.0"
+    },
+    {
+      "nome": "teste",
+      "id": 2
+    }
+  ],
+  "tarefas": [
+    {
+      "duracaoEmSegundos": 120,
+      "descricao": "Configuração do ambiente",
+      "projeto": {
+        "id": 1,
+        "nome": "Tracker 3.0"
+      },
+      "id": 1
+    },
+    {
+      "duracaoEmSegundos": 60,
+      "descricao": "Configuração teste",
+      "projeto": {
+        "id": 2,
+        "nome": "Tracker 5.0"
+      },
+      "id": 2
+    },
+    {
+      "duracaoEmSegundos": 1,
+      "descricao": "teste",
+      "projeto": {
+        "nome": "teste",
+        "id": 2
+      },
+      "id": 3
     }
   ]
 }
