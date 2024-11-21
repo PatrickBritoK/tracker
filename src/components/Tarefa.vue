@@ -14,9 +14,11 @@ export default defineComponent({
       required: true,
     },
   },
-  methods: {
-    tarefaClicada(): void {
-      this.$emit("aoTarefaClicada", this.tarefa);
+  computed: {
+    tempoGasto(): string {
+      return new Date(this.tarefa.duracaoEmSegundos * 1000)
+        .toISOString()
+        .substr(11, 8);
     },
   },
 });
@@ -24,7 +26,7 @@ export default defineComponent({
 
 <template>
   <Box>
-    <div class="columns clicavel" @click="tarefaClicada">
+    <div class="columns">
       <div class="column is-4">
         {{ tarefa.descricao || "Tarefa sem descrição" }}
       </div>

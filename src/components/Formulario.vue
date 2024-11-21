@@ -1,5 +1,5 @@
 <script lang="ts">
-import { computed, defineComponent } from "vue";
+import { computed, defineComponent, ref } from "vue";
 import Temporizador from "./Temporizador.vue";
 import { useStore } from "vuex";
 import { key } from "@/store";
@@ -7,26 +7,29 @@ import { key } from "@/store";
 export default defineComponent({
   name: "Formulario",
   components: { Temporizador },
-  data() {
-    return {
-      descricao: "",
-      idProjeto: "",
-    };
-  },
-  methods: {
-    finalizarTarefa(tempoDecorrido: number): void {
-      this.$emit("aoSalvarTarefa", {
-        duracaoEmSegundos: tempoDecorrido,
-        descricao: this.descricao,
-        projeto: this.projetos.find(proj => proj.id == this.idProjeto)
-      });
-      this.descricao = "";
-    },
-  },
-  setup() {
+  methods: {},
+  setup(props, { emit }) {
     const store = useStore(key);
+
+    const descricao = ref("");
+    const idProjeto = ref("");
+
+    const projetos = computed(() => store.state.projeto.projetos);
+
+    const salvarTarefa = (tempoDecorrido: number): void => {
+      emit("aoSalvarTarefa", {
+        duracaoEmSegundos: tempoDecorrido,
+        descricao: descricao.value,
+        projeto: projetos.value.find((proj) => proj.id == idProjeto.value),
+      });
+      descricao.value = "";
+    };
+
     return {
-      projetos: computed(() => store.state.projetos),
+      descricao,
+      idProjeto,
+      projetos,
+      salvarTarefa,
     };
   },
   emits: ["aoSalvarTarefa"],
@@ -63,7 +66,7 @@ export default defineComponent({
         </div>
       </div>
       <div class="column">
-        <Temporizador @ao-temporizador-finalizado="finalizarTarefa" />
+        <Temporizador @ao-temporizador-finalizado="salvarTarefa" />
       </div>
     </div>
   </div>

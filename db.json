@@ -2,11 +2,15 @@
   "projetos": [
     {
       "id": 1,
-      "nome": "Tracker 3.0"
+      "nome": "Tracker 5.0"
     },
     {
       "nome": "teste",
       "id": 2
+    },
+    {
+      "id": 3,
+      "nome": "Tracker 3.0"
     }
   ],
   "tarefas": [
@@ -29,13 +33,18 @@
       "id": 2
     },
     {
-      "duracaoEmSegundos": 1,
-      "descricao": "teste",
+      "duracaoEmSegundos": 2,
+      "descricao": "Teste",
       "projeto": {
-        "nome": "teste",
-        "id": 2
+        "id": 3,
+        "nome": "Tracker 3.0"
       },
       "id": 3
+    },
+    {
+      "duracaoEmSegundos": 1,
+      "descricao": "",
+      "id": 4
     }
   ]
 }
