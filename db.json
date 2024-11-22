@@ -34,7 +34,7 @@
     },
     {
       "duracaoEmSegundos": 2,
-      "descricao": "Teste",
+      "descricao": "Teste 2",
       "projeto": {
         "id": 3,
         "nome": "Tracker 3.0"
